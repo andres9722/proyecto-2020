@@ -4,9 +4,9 @@ import toJSON from 'enzyme-to-json';
 
 const fakeItem = {
   id: 'ABC123',
-  title: 'A Cool Item',
+  title: 'Item de prueba',
   price: 4000,
-  description: 'This item is really cool!',
+  description: 'Descripcion de prueba',
   image: 'dog.jpg',
   largeImage: 'largedog.jpg',
 };
@@ -17,21 +17,21 @@ describe('<Item/>', () => {
     expect(toJSON(wrapper)).toMatchSnapshot();
   });
 
-  it('renders the image properly', () => {
+  it('Renderiza la imagen adecuadamente', () => {
     const wrapper = shallow(<ItemComponent item={fakeItem} />);
     const img = wrapper.find('img');
     expect(img.props().src).toBe(fakeItem.image);
     expect(img.props().alt).toBe(fakeItem.title);
   });
 
-  it('renders the pricetag and title', () => {
+  it('Renderiza el precio y el titulo adecuadamente', () => {
     const wrapper = shallow(<ItemComponent item={fakeItem} />);
     const PriceTag = wrapper.find('PriceTag');
-    expect(PriceTag.children().text()).toBe('$40');
+    expect(PriceTag.children().text()).toBe('$4000');
     expect(wrapper.find('Title a').text()).toBe(fakeItem.title);
   });
 
-  it('renders out the buttons properly', () => {
+  it('Renderiza los botones adecuadamente', () => {
     const wrapper = shallow(<ItemComponent item={fakeItem} />);
     const buttonList = wrapper.find('.buttonList');
     expect(buttonList.children()).toHaveLength(3);

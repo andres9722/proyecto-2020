@@ -35,53 +35,58 @@ class Signup extends Component {
         variables={this.state}
         refetchQueries={[{ query: CURRENT_USER_QUERY }]}
       >
-        {(signup, { error, loading }) => (
-          <Form
-            method="post"
-            onSubmit={async (e) => {
-              e.preventDefault();
-              await signup();
-              this.setState({ name: "", email: "", password: "" });
-            }}
-          >
-            <fieldset disabled={loading} aria-busy={loading}>
-              <h2>Crear cuenta</h2>
-              <Error error={error} />
-              <label htmlFor="email">
-                Email
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  value={this.state.email}
-                  onChange={this.saveToState}
-                />
-              </label>
-              <label htmlFor="name">
-                Nombre
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Nombre"
-                  value={this.state.name}
-                  onChange={this.saveToState}
-                />
-              </label>
-              <label htmlFor="password">
-                Contraseña
-                <input
-                  type="password"
-                  name="password"
-                  placeholder="Contraseña"
-                  value={this.state.password}
-                  onChange={this.saveToState}
-                />
-              </label>
+        {(signup, { error, loading, data }) => {
+          return (
+            <Form
+              method="post"
+              onSubmit={async (e) => {
+                e.preventDefault();
+                await signup();
+                this.setState({ name: "", email: "", password: "" });
+              }}
+            >
+              <fieldset disabled={loading} aria-busy={loading}>
+                <h2>Crear cuenta</h2>
+                <Error error={error} />
+                <label htmlFor="email">
+                  Email
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    value={this.state.email}
+                    onChange={this.saveToState}
+                  />
+                </label>
+                <label htmlFor="name">
+                  Nombre
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Nombre"
+                    value={this.state.name}
+                    onChange={this.saveToState}
+                  />
+                </label>
+                <label htmlFor="password">
+                  Contraseña
+                  <input
+                    type="password"
+                    name="password"
+                    placeholder="Contraseña"
+                    value={this.state.password}
+                    onChange={this.saveToState}
+                  />
+                </label>
 
-              <button type="submit">Registrarse!</button>
-            </fieldset>
-          </Form>
-        )}
+                <button type="submit">Registrarse!</button>
+              </fieldset>
+              <p>
+                {data && data.signup && "Usuario registrado correctamente!"}
+              </p>
+            </Form>
+          );
+        }}
       </Mutation>
     );
   }

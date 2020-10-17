@@ -2,7 +2,7 @@
 
 exports[`<CreateItem/> renders and matches snapshot 1`] = `
 <form
-  className="Form-sc-1xszr8q-0 krRxky"
+  className="Form-x7u6my-0 gSfciD"
   data-test="form"
   onSubmit={[Function]}
 >
