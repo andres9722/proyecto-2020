@@ -2,7 +2,7 @@
 
 work in progress
 
-Juan Pablo Tobon
+Juan 
 Andres Felipe Alvarez
 Diego Gomez
 Sebastian Galeano
